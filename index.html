@@ -1,75 +1,283 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Profile Card</title>
-    <style>
-      body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        background-color: #f4f4f4;
-        font-family: Arial, sans-serif;
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Profile Card</title>
+  <style>
+    /* Box sizing makes width/height calculations predictable */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f4f4f4;
+      font-size: 13px;
+      padding: 24px;
+    }
+
+    /* Card container (responsive) */
+    .card {
+      width: 100%;
+      max-width: 400px;          /* cap width on large screens */
+      background: #fff;
+      border-radius: 12px;
+      padding: 16px;
+      border: 1px solid #e0e0e0;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+      overflow: visible;
+    }
+
+    /* Intro area: avatar + title + follow button */
+    .intro {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      background: #0f1724;
+      color: #fff;
+      padding: 12px;
+      border-radius: 8px;
+    }
+
+    /* Avatar figure and image */
+    figure {
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    figure img {
+      width: 84px;
+      height: 84px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      border: 2px solid rgba(255,255,255,0.12);
+    }
+    figure figcaption {
+      display: none; /* optional caption, hidden visually */
+    }
+
+    /* Title inside intro */
+    .intro-header {
+      flex: 1 1 auto;
+    }
+    .intro-header h1 {
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.1;
+      font-weight: 700;
+    }
+    .intro-header p {
+      margin: 4px 0 0 0;
+      font-size: 12px;
+      color: rgba(255,255,255,0.8);
+    }
+
+    /* Follow button */
+    .btn-follow {
+      background-color: rgb(60, 87, 219);
+      color: white;
+      font-weight: 700;
+      padding: 8px 12px;
+      border-radius: 24px;
+      border: none;
+      cursor: pointer;
+      flex: 0 0 auto;
+    }
+    .btn-follow:focus-visible,
+    a:focus-visible {
+      outline: 3px solid rgba(60,87,219,0.28);
+      outline-offset: 2px;
+    }
+
+    /* Name and handle */
+    .name {
+      margin-top: 12px;
+    }
+    .name h2 {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.1;
+    }
+    .name p.handle {
+      margin: 4px 0 0 0;
+      color: gray;
+      font-size: 14px;
+    }
+
+    /* Biography */
+    .bio {
+      margin-top: 10px;
+    }
+    .bio p {
+      margin: 0;
+      color: #333;
+      line-height: 1.35;
+      word-break: break-word;
+    }
+    .bio a {
+      color: rgb(60,87,219);
+      text-decoration: none;
+    }
+
+    /* Hobbies / Dislikes */
+    section {
+      margin-top: 12px;
+    }
+    section h3 {
+      margin: 0 0 8px 0;
+      font-size: 14px;
+    }
+    .hobbies ul, .dislikes ul, .socials ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .hobbies li, .dislikes li {
+      background: #f0f0f0;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 13px;
+    }
+
+    /* Social links */
+    .socials h3 {
+      margin: 10px 0 8px 0;
+      font-size: 14px;
+    }
+    .socials a {
+      display: inline-block;
+      padding: 6px 8px;
+      border-radius: 6px;
+      color: #0b3a9c;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .socials a:hover {
+      text-decoration: underline;
+    }
+
+    /* Time */
+    .time {
+      margin-top: 12px;
+      color: #666;
+      font-size: 12px;
+    }
+
+    /* Responsive behavior: on narrow screens stack intro contents */
+    @media (max-width: 420px) {
+      .intro {
+        flex-direction: column;
+        align-items: flex-start;
       }
-      .card {
-        background: white;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      figure img {
+        width: 72px;
+        height: 72px;
+      }
+      .btn-follow {
+        align-self: stretch;
         text-align: center;
-        max-width: 300px;
-        width: 100%;
       }
-      img {
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-        object-fit: cover;
-      }
-      h2,
-      h3,
-      p {
-        margin: 10px 0;
-      }
-      .social-links a {
-        margin: 0 5px;
-        text-decoration: none;
-        color: #0073e6;
-        font-size: 20px;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="card">
-      <img
-        src="/Profile Card/assets/Blog Post Img Intro part2.jpg"
-        alt="Profile Picture"
-        data-testid="profilePicture"
-      />
-      <h2 data-testid="fullName">Fotseu Josue</h2>
-      <h3 data-testid="jobTitle">Frontend Developer</h3>
-      <p data-testid="shortBio">
-        A passionate frontend developer eager to build responsive and
-        interactive web applications.
-      </p>
-      <p data-testid="currentLocation">Buea, cameroon</p>
-      <p data-testid="emailAddress">josuefotseu02@example.com</p>
-      <div class="social-links" data-testid="socialLinks">
-        <a href="https://www.linkedin.com/in/josu%C3%A9-fotseu/" target="_blank">LinkedIn</a>
-        <a href="https://github.com/dashboard" target="_blank">GitHub</a>
-        <a href="https://www.instagram.com/tiayafotseu/?hl=en" target="_blank">Instagram</a>
+      .name h2 { font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <article class="card" data-testid="test-profile-card" aria-label="Profile card">
+    <div class="intro" role="region" aria-label="Profile header">
+      <figure>
+       
+        <img
+          src="assets/national-cancer-institute-82BHTkmkDfU-unsplash.jpg"
+          alt="Laboratory technician in the lab"
+          data-testid="test-user-avatar"
+        />
+        <figcaption class="sr-only">User avatar</figcaption>
+      </figure>
+
+      <div class="intro-header">
+        <h1>Think Different</h1>
+        <p>Founder focused on simple, elegant solutions</p>
       </div>
-      <p data-testid="currentTimeUTC" id="utcTime"></p>
+
+      <button
+        class="btn-follow"
+        type="button"
+        aria-pressed="false"
+      >
+        Following
+      </button>
     </div>
-    <script>
-      function updateTime() {
-        const now = new Date();
-        document.getElementById("utcTime").innerText =
-          "UTC Time: " + now.toISOString();
-      }
-      updateTime();
-    </script>
-  </body>
+
+    <header class="name" data-testid="test-user-name">
+      <h2>Fotseu Joshua</h2>
+      <p class="handle">@Jo.Cloud</p>
+    </header>
+
+    <div class="bio">
+      <p data-testid="test-user-bio">
+        Founder &amp; CEO <a href="#" aria-label="Don8">@Don8</a> — Simplicity is sophistication — stay hungry, stay foolish
+      </p>
+    </div>
+
+    <section class="hobbies" data-testid="test-user-hobbies" aria-labelledby="hobbies-heading">
+      <h3 id="hobbies-heading">Hobbies</h3>
+      <ul>
+        <li class="hobby">Reading</li>
+        <li class="hobby">Coding</li>
+        <li class="hobby">Music</li>
+        <li class="hobby">Gaming</li>
+      </ul>
+    </section>
+
+    <section class="dislikes" data-testid="test-user-dislikes" aria-labelledby="dislikes-heading">
+      <h3 id="dislikes-heading">Dislikes</h3>
+      <ul>
+        <li class="dislike">Laziness</li>
+        <li class="dislike">Dishonesty</li>
+        <li class="dislike">Procrastination</li>
+      </ul>
+    </section>
+
+    <nav class="socials" data-testid="test-user-social-links" aria-label="Social links">
+      <h3>Follow me</h3>
+      <ul>
+        <li><a data-testid="test-user-social-linkedin" href="https://www.linkedin.com/in/josu%C3%A9-fotseu/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        <li><a data-testid="test-user-social-github" href="https://github.com/Joshua4-0p/" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+        <li><a data-testid="test-user-social-twitter" href="https://twitter.com/" target="_blank" rel="noopener noreferrer">Twitter</a></li>
+      </ul>
+    </nav>
+
+    <!-- the time element MUST contain Date.now() in milliseconds -->
+    <p class="time" data-testid="test-user-time" id="utcTime" aria-live="polite"></p>
+  </article>
+
+  <script>
+    function setMsTime() {
+      const el = document.getElementById('utcTime');
+      if (!el) return;
+      el.textContent = String(Date.now());
+    }
+    setMsTime();
+    // Update every second so the time stays current for manual checks (tests usually read the initial value)
+    setInterval(setMsTime, 1000);
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+  
 </html>
