@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>About Me — Profile</title>
+  <style>
+    /* Basic reset & box-sizing */
+    *, *::before, *::after { box-sizing: border-box; }
+    html,body { margin: 0; padding: 0; height: 100%; }
+    body {
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      line-height: 1.45;
+      color: #111827;
+      background: #f4f6f8;
+      padding: 24px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 900px;
+    }
+
+    header.page-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+    header.page-header h1 {
+      margin: 0;
+      font-size: 20px;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #2563eb;
+      font-weight: 600;
+      margin-left: 12px;
+    }
+
+    main.card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(13, 17, 23, 0.06);
+      border: 1px solid rgba(15,23,42,0.03);
+    }
+
+    .intro {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+    .intro img {
+      width: 84px;
+      height: 84px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #e6eefc;
+    }
+    .intro-text h2 { margin: 0; font-size: 18px; }
+    .intro-text p { margin: 6px 0 0 0; color: #6b7280; font-size: 13px; }
+
+    /* Sections */
+    .sections {
+      margin-top: 14px;
+      display: grid;
+      gap: 14px;
+    }
+    section {
+      background: #fafafa;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid rgba(15, 23, 42, 0.03);
+    }
+    section h3 { margin: 0 0 8px 0; font-size: 15px; }
+    section p, section ul {
+      margin: 0;
+      color: #374151;
+      font-size: 14px;
+    }
+    section ul { padding-left: 18px; }
+
+    footer {
+      margin-top: 16px;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .small {
+      font-size: 13px;
+      color: #6b7280;
+    }
+
+    /* Responsive */
+    @media (min-width: 700px) {
+      .sections {
+        grid-template-columns: 1fr 1fr;
+      }
+      section.full { grid-column: 1 / -1; }
+    }
+
+    /* Focus styles for keyboard accessibility */
+    a:focus, button:focus {
+      outline: 3px solid rgba(37,99,235,0.18);
+      outline-offset: 2px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="page-header" aria-labelledby="aboutTitle">
+      <h1 id="aboutTitle">About Me</h1>
+      <nav class="nav-links" aria-label="Site navigation">
+        <a href="./main-index.html">Profile</a>
+        <a href="./contact.html">Contact</a>
+      </nav>
+    </header>
+
+    <main class="card" data-testid="test-about-page" role="main" aria-labelledby="aboutTitle">
+      <div class="intro" aria-hidden="false">
+        <img src="assets/national-cancer-institute-82BHTkmkDfU-unsplash.jpg" alt="Profile avatar" />
+        <div class="intro-text">
+          <h2>Fotseu Joshua</h2>
+          <p>Frontend developer in training. Curious about accessible, responsive interfaces.</p>
+        </div>
+      </div>
+
+      <div class="sections">
+        <section class="full" data-testid="test-about-bio" aria-labelledby="bio-heading">
+          <h3 id="bio-heading">Bio</h3>
+          <p>
+            I'm a budding frontend engineer who enjoys building simple, accessible UI components and learning modern patterns.
+            I focus on semantic HTML, responsive CSS, and pragmatic JavaScript.
+          </p>
+        </section>
+
+        <section data-testid="test-about-goals" aria-labelledby="goals-heading">
+          <h3 id="goals-heading">Goals in this program</h3>
+          <ul>
+            <li>Sharpen semantic and accessible HTML skills.</li>
+            <li>Master responsive UI patterns with CSS Grid and Flexbox.</li>
+            <li>Practice writing testable, maintainable JavaScript.</li>
+          </ul>
+        </section>
+
+        <section data-testid="test-about-confidence" aria-labelledby="confidence-heading">
+          <h3 id="confidence-heading">Areas of low confidence</h3>
+          <ul>
+            <li>Advanced CSS animations and performant patterns.</li>
+            <li>Complex accessibility patterns (e.g., ARIA-complex widgets).</li>
+            <li>State management for larger vanilla JS apps.</li>
+          </ul>
+        </section>
+
+        <section class="full" data-testid="test-about-future-note" aria-labelledby="future-heading">
+          <h3 id="future-heading">Note to future self</h3>
+          <p>
+            Keep practicing, ask for feedback early, and try to break components intentionally to learn failure modes.
+            Shipping small, consistent improvements helps a lot.
+          </p>
+        </section>
+
+        <section class="full" data-testid="test-about-extra" aria-labelledby="extra-heading">
+          <h3 id="extra-heading">Extra thoughts</h3>
+          <p>
+            A strong habit: make every component accessible by default and progressively enhance visuals. Focus on clarity over cleverness.
+          </p>
+        </section>
+      </div>
+
+      <footer>
+        <div class="small">Built for the Frontend Wizards program</div>
+        <div>
+          <a href="contact.html">Send feedback</a>
+        </div>
+      </footer>
+    </main>
+  </div>
+</body>
+</html>
