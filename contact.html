@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact us</title>
+    <style>
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 24px;
+        background-color: #f4f4f4;
+      }
+      .container {
+        border: 2px solid lightgray;
+        width: 50%;
+        height: 500px;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: white;
+      }
+      .contact > label {
+        display: block;
+        margin-bottom: 8px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 16px;
+        font-weight: 550;
+      }
+      .contact > input {
+        display: block;
+        margin-bottom: 8px;
+        font-family: Arial, Helvetica, sans-serif;
+        height: 30px;
+        max-width: 100%;
+        width: 75%;
+      }
+    </style>
+    <script src="index.js" defer></script>
+  </head>
+  <body>
+    <article class="container">
+      <h2>Fill the from below:</h2>
+      <form action="" class="contact">
+        <label for="full name">Full name</label>
+        <input
+          type="text"
+          placeholder="Enter your full name"
+          data-testid="test-contact-name"
+          required
+        />
+        <label for="email">Email</label>
+        <input
+          type="email"
+          name=""
+          id="email"
+          placeholder="enter your email"
+          data-testid="test-contact-email"
+          required
+        />
+        <label for="subject">Subject of Request</label>
+        <input
+          type="text"
+          id="subject"
+          placeholder="Write the subject of your request"
+          data-testid="test-contact-email"
+          required
+        />
+        <label for="message">Message</label>
+        <input
+          type="text"
+          id="message"
+          placeholder="Write your message here"
+          data-testid="test-contact-message"
+          required
+        />
+        <button
+          type="submit"
+          data-testid="test-contact-submit"
+          class="btn-submit"
+          aria-label="Send message"
+        >
+          Send Message
+        </button>
+      </form>
+    </article>
+  </body>
+</html>
