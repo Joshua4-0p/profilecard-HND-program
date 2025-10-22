@@ -189,6 +189,7 @@
       .name h2 { font-size: 16px; }
     }
   </style>
+  <link rel="stylesheet" href="./index.js">
 </head>
 <body>
   <article class="card" data-testid="test-profile-card" aria-label="Profile card">
@@ -255,6 +256,11 @@
         <li><a data-testid="test-user-social-twitter" href="https://twitter.com/" target="_blank" rel="noopener noreferrer">Twitter</a></li>
       </ul>
     </nav>
+    
+    <section>
+      <p>To know more about me click on <a href="./about.html"><strong>About Me</strong></a> page</p> <br>
+      <p>Contact us <a href="./contact.html"><strong>here</strong></a></p>
+    </section>
 
     <!-- the time element MUST contain Date.now() in milliseconds -->
     <p class="time" data-testid="test-user-time" id="utcTime" aria-live="polite"></p>
@@ -271,13 +277,4 @@
     setInterval(setMsTime, 1000);
   </script>
 </body>
-</html>
-
-
-
-
-
-
-
-  
 </html>
